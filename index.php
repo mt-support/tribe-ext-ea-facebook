@@ -126,6 +126,7 @@ class Tribe__Extension__Facebook_Dev_Origin extends Tribe__Extension {
 		add_filter( 'tribe_aggregator_event_translate_service_data_venue_field_map', array( $this, 'add_venue_field_map' ) );
 		add_filter( 'tribe_aggregator_event_translate_service_data_organizer_field_map', array( $this, 'add_organizer_field_map' ) );
 		add_filter( 'tribe_aggregator_import_validate_meta_by_origin', array( $this, 'validate_import_meta_by_origin' ), 10, 3 );
+		add_filter( 'tribe_aggregator_clean_unsupported', array( $this, 'stop_unsupported_clean' ), 10, 3 );
 
 		// Add Global ID origins.
 		add_filter( 'tribe_global_id_valid_types', array( $this, 'register_global_id_valid_types' ) );
@@ -536,6 +537,35 @@ class Tribe__Extension__Facebook_Dev_Origin extends Tribe__Extension {
 		}
 
 		return $result;
+
+	}
+
+	/**
+	 * Stop unsupported post cleaning for our origin.
+	 *
+	 * @param bool                                           $should_delete Whether the unsupported post should be
+	 *                                                                      deleted or not; defaults to true.
+	 * @param Tribe__Events__Aggregator__Record__Unsupported $record        Record object.
+	 * @param WP_Post                                        $post          Record post object.
+	 *
+	 * @return bool Whether the unsupported post should be deleted or not; defaults to true.
+	 */
+	public function stop_unsupported_clean( $should_delete, $record, $post ) {
+
+		if ( ! $should_delete ) {
+			return $should_delete;
+		}
+
+		$origins = array(
+			self::get_origin(),
+			'ea/' . self::get_origin(),
+		);
+
+		if ( ! in_array( $record->origin, $origins, true ) ) {
+			return false;
+		}
+
+		return $should_delete;
 
 	}
 
