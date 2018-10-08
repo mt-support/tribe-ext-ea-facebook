@@ -27,7 +27,6 @@ class Tribe__Extension__Facebook_Dev_Origin extends Tribe__Extension {
 	 */
 	public function construct() {
 
-		// @todo Add URL.
 		$this->set_url( 'https://theeventscalendar.com/extensions/facebook-ea/' );
 		$this->set_version( '1.0.0' );
 		$this->add_required_plugin( 'Tribe__Events__Main', '4.6.24.1' );
