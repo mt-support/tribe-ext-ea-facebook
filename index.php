@@ -134,7 +134,8 @@ class Tribe__Extension__Facebook_Dev_Origin extends Tribe__Extension {
 
 		// Add custom origin to UI.
 		add_filter( 'tribe_addons_tab_fields', array( $this, 'add_addon_fields' ) );
-		//add_filter( 'tribe_aggregator_fields', array( $this, 'add_ea_settings_fields' ), 10, 4 );
+		add_filter( 'tribe_aggregator_fields', array( $this, 'add_ea_settings_fields' ), 10, 4 );
+		add_filter( 'tribe_aggregator_import_setting_origins', array( $this, 'register_import_setting_origin' ) );
 		add_action( 'tribe_events_status_third_party', array( $this, 'add_origin_to_status' ) );
 		add_action( 'tribe_events_aggregator_import_form', array( $this, 'add_origin_to_import_form' ), 10, 2 );
 		add_action( 'tribe_events_aggregator_refine_keyword_exclusions', array( $this, 'add_origin_to_refine_exclusions' ) );
@@ -444,6 +445,19 @@ class Tribe__Extension__Facebook_Dev_Origin extends Tribe__Extension {
 
 		return $fields;
 
+	}
+
+	/**
+	 * Register import setting origin for default import setting handling.
+	 *
+	 * @param array $origins List of origins that support import settings.
+	 *
+	 * @return array List of origins that support import settings.
+	 */
+	public function register_import_setting_origin( $origins ) {
+		$origins[] = 'facebook-dev';
+
+		return $origins;
 	}
 
 	/**
