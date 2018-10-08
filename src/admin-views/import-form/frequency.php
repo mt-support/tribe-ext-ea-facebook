@@ -1,5 +1,5 @@
 <?php
-	$selected_frequency = empty( $record->meta['frequency'] ) ? 'daily' : $record->meta['frequency'];
+$selected_frequency = empty( $record->meta['frequency'] ) ? 'daily' : $record->meta['frequency'];
 ?>
 <tr class="tribe-dependent" data-depends="<?php echo esc_attr( $data_depends ); ?>" data-condition="<?php echo esc_attr( $data_condition ); ?>">
 	<th scope="row">
