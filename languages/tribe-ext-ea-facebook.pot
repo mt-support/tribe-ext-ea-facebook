@@ -1,0 +1,226 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: The Events Calendar Extension: Facebook Dev for EA\n"
+"POT-Creation-Date: 2018-10-08 19:51-0500\n"
+"PO-Revision-Date: 2018-10-08 19:51-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: tribe-ext-ea-facebook.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: src/Tribe/Record.php:19 tribe-ext-ea-facebook.php:88
+msgid "Facebook Dev"
+msgstr ""
+
+#: src/admin-views/import-form/frequency.php:14
+#: src/admin-views/import-form/frequency.php:29
+msgid "Scheduled Import"
+msgstr ""
+
+#: src/admin-views/import-form/frequency.php:26
+msgid "One-Time Import"
+msgstr ""
+
+#: src/admin-views/import-form/preview.php:4
+msgid "Preview"
+msgstr ""
+
+#: src/admin-views/import-form/source-url.php:27
+msgid "Invalid URL"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:164
+#, php-format
+msgid ""
+"%s requires PHP version %s or newer to work. Please contact your website "
+"host and inquire about updating PHP."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:393
+#, php-format
+msgctxt "button text for connection to EA origin"
+msgid "Connect to %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:396
+#, php-format
+msgctxt "button text for refreshing connection with EA origin"
+msgid "Refresh your connection to %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:398
+msgid "Disconnect"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:404
+#, php-format
+msgctxt "description of connection for EA origin"
+msgid "You need to connect Event Aggregator to %1$s to import your events."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:408
+#, php-format
+msgctxt "notice for needing connection for EA origin"
+msgid "You need to connect to %1$s for Event Aggregator to work properly"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:452
+#, php-format
+msgctxt "heading text for origin import settings"
+msgid "%1$s Import Settings"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:459
+#, php-format
+msgctxt "tooltip text for default post status EA origin setting"
+msgid "The default post status for events imported for %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:463
+#, php-format
+msgctxt "tooltip text for default event category EA origin setting"
+msgid "The default event category for events imported for %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:467
+#, php-format
+msgctxt "tooltip text for default event map status EA origin setting"
+msgid "Show Google Map by default on imported event and venues for %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:478
+msgid "Default Status"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:490
+msgid "Default Event Category"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:505
+msgid "Show Google Map"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:623
+msgid "Please provide a Facebook URL when importing from Facebook."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:686
+#, php-format
+msgctxt "no connection notice for EA origin"
+msgid "You have not connected Event Aggregator to %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:690
+#, php-format
+msgctxt "link for connecting EA origin"
+msgid "Connect to %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:698
+#, php-format
+msgctxt "notice for unavailable oauth for EA origin"
+msgid "Limited connectivity with %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:701
+msgid "The service has disabled oAuth. Some types of events may not import."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:731
+msgid "Import Type:"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:732
+msgid "Select Import Type"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:733
+msgid ""
+"One-time imports include all currently listed events, while scheduled "
+"imports automatically grab new events and updates on a set schedule. Single "
+"events can be added via a one-time import."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:738
+msgid "Scheduled import frequency"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:739
+msgid "Select how often you would like events to be automatically imported."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:753
+#, php-format
+msgctxt "notice to connect the EA origin"
+msgid "Please connect to %1$s to enable event imports."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:757
+#, php-format
+msgctxt "button text to connect the EA origin"
+msgid "Connect to %1$s"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:772
+msgid "Import Source"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:773
+msgid "Select Source"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:774
+msgid ""
+"Import events directly from your connected account or from a public URL."
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:779
+msgid "Import from your account"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:783
+msgid "Import from URL"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:790
+msgid "URL:"
+msgstr ""
+
+#: tribe-ext-ea-facebook.php:794
+#, php-format
+msgctxt "help text for origin event source url"
+msgid "Enter an event URL, e.g. %1$s"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "The Events Calendar Extension: Facebook Dev for EA"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://theeventscalendar.com/extensions/facebook-ea/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Provides a new Facebook Dev origin for Event Aggregator."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/1971"
+msgstr ""
