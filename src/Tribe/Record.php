@@ -12,30 +12,6 @@ class Facebook_Dev_Origin__Record extends Tribe__Events__Aggregator__Record__Abs
 	public $origin = 'facebook-dev';
 
 	/**
-	 * {@inheritdoc}
-	 */
-	public function get_label() {
-
-		return __( 'Facebook Dev', 'the-events-calendar-facebook-events' );
-
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function queue_import( $args = array() ) {
-
-		$defaults = array(
-			'site' => urlencode( site_url() ),
-		);
-
-		$args = wp_parse_args( $args, $defaults );
-
-		return parent::queue_import( $args );
-
-	}
-
-	/**
 	 * Filters the event to ensure that a proper URL is in the EventURL.
 	 *
 	 * @param array                                       $event  Event data
@@ -94,6 +70,30 @@ class Facebook_Dev_Origin__Record extends Tribe__Events__Aggregator__Record__Abs
 		$args['site'] = urlencode( site_url() );
 
 		return $args;
+
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function get_label() {
+
+		return __( 'Facebook Dev', 'the-events-calendar-facebook-events' );
+
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function queue_import( $args = array() ) {
+
+		$defaults = array(
+			'site' => urlencode( site_url() ),
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+		return parent::queue_import( $args );
 
 	}
 

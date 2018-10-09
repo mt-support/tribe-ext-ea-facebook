@@ -25,12 +25,12 @@
 
 namespace Tribe\Extensions\EA_FB;
 
-use Tribe__Extension;
-use Tribe__Events__Main;
-use Tribe__Settings;
-use Tribe__Events__Aggregator__Record__Abstract;
 use Tribe__Events__Aggregator__Cron;
 use Tribe__Events__Aggregator__Page;
+use Tribe__Events__Aggregator__Record__Abstract;
+use Tribe__Events__Main;
+use Tribe__Extension;
+use Tribe__Settings;
 
 /**
  * Define Constants
@@ -232,7 +232,7 @@ if (
 		 *
 		 * @param Tribe__Events__Aggregator__Record__Abstract|null $record Record object for given origin.
 		 * @param string                                           $origin Import origin.
-		 * @param \WP_Post|null                                     $post   Record post data.
+		 * @param \WP_Post|null                                    $post   Record post data.
 		 *
 		 * @return Tribe__Events__Aggregator__Record__Abstract|null $record Record object for given origin.
 		 */
@@ -605,11 +605,11 @@ if (
 		/**
 		 * Validate the import meta for the origin.
 		 *
-		 * @param array|\WP_Error $result The updated/validated meta array or A `WP_Error` if the validation failed.
-		 * @param string         $origin Origin name.
-		 * @param array          $meta   Import meta.
+		 * @param array|\WP_Error $result The updated/validated meta array or a `WP_Error` if the validation failed.
+		 * @param string          $origin Origin name.
+		 * @param array           $meta   Import meta.
 		 *
-		 * @return array|\WP_Error $result The updated/validated meta array or A `WP_Error` if the validation failed.
+		 * @return array|\WP_Error $result The updated/validated meta array or a `WP_Error` if the validation failed.
 		 */
 		public function validate_import_meta_by_origin( $result, $origin, $meta ) {
 
