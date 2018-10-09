@@ -1,37 +1,15 @@
 <?php
-// Don't load directly
-defined( 'WPINC' ) or die;
 
-class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggregator__Record__Abstract {
+namespace Tribe\Extensions\EA_FB;
+
+use Tribe__Events__Aggregator__Record__Abstract;
+
+class Facebook_Dev_Origin__Record extends Tribe__Events__Aggregator__Record__Abstract {
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public $origin = 'facebook-dev';
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function get_label() {
-
-		return __( 'Facebook Dev', 'the-events-calendar-facebook-events' );
-
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function queue_import( $args = array() ) {
-
-		$defaults = array(
-			'site' => urlencode( site_url() ),
-		);
-
-		$args = wp_parse_args( $args, $defaults );
-
-		return parent::queue_import( $args );
-
-	}
 
 	/**
 	 * Filters the event to ensure that a proper URL is in the EventURL.
@@ -43,7 +21,7 @@ class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggr
 	 */
 	public static function filter_event_to_force_url( $event, $record ) {
 
-		if ( Tribe__Extension__Facebook_Dev_Origin::get_origin() !== $record->origin ) {
+		if ( Facebook_Dev_Origin::get_origin() !== $record->origin ) {
 			return $event;
 		}
 
@@ -67,7 +45,7 @@ class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggr
 	 */
 	public static function filter_event_to_preserve_fields( $event, $record ) {
 
-		if ( Tribe__Extension__Facebook_Dev_Origin::get_origin() !== $record->origin ) {
+		if ( Facebook_Dev_Origin::get_origin() !== $record->origin ) {
 			return $event;
 		}
 
@@ -85,13 +63,37 @@ class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggr
 	 */
 	public static function filter_add_site_get_import_data( $args, $record ) {
 
-		if ( Tribe__Extension__Facebook_Dev_Origin::get_origin() !== $record->origin ) {
+		if ( Facebook_Dev_Origin::get_origin() !== $record->origin ) {
 			return $args;
 		}
 
 		$args['site'] = urlencode( site_url() );
 
 		return $args;
+
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function get_label() {
+
+		return __( 'Facebook Dev', 'the-events-calendar-facebook-events' );
+
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function queue_import( $args = [] ) {
+
+		$defaults = [
+			'site' => urlencode( site_url() ),
+		];
+
+		$args = wp_parse_args( $args, $defaults );
+
+		return parent::queue_import( $args );
 
 	}
 

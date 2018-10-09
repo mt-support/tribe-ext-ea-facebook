@@ -19,7 +19,7 @@
 }
 
 .tribe-ea-connect-button:active,
-	.tribe-ea-connect-button:hover {
+.tribe-ea-connect-button:hover {
 	color: #fff;
 	cursor: pointer;
 }
@@ -29,8 +29,8 @@
 }
 
 .tribe-ea-connect-button:active,
-	.tribe-ea-connect-button:hover,
-	.tribe-ea-connect-button:focus {
+.tribe-ea-connect-button:hover,
+.tribe-ea-connect-button:focus {
 	background: #32497e;
 }
 
@@ -43,6 +43,6 @@
 }
 
 .tribe-ea-disconnect-button:active,
-	.tribe-ea-disconnect-button:hover {
+.tribe-ea-disconnect-button:hover {
 	color: #f00;
 }

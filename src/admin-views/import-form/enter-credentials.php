@@ -7,7 +7,7 @@
 				<?php echo esc_html( $credentials_text ); ?>
 			</p>
 			<a class="tribe-ea-<?php echo esc_attr( $origin ); ?>-button"
-				href="<?php echo esc_url( $auth_url ); ?>">
+			   href="<?php echo esc_url( $auth_url ); ?>">
 				<?php echo esc_html( $credentials_button ); ?>
 			</a>
 		</div>
