@@ -37,13 +37,13 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
-= 1.0.1 2018-10-08 =
+= [1.0.1] 2018-10-08 =
 
 * Fix - Added text domain and .pot file to make strings translatable
 * Tweak - Added GitHub Updater link to plugin header
 * Tweak - Added check for PHP 5.6+
 * Tweak - Changed license from GPLv2+ to GPLv3+
 
-= 1.0.0 2018-10-08 =
+= [1.0.0] 2018-10-08 =
 
 * Initial release
