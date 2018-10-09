@@ -85,11 +85,11 @@ class Facebook_Dev_Origin__Record extends Tribe__Events__Aggregator__Record__Abs
 	/**
 	 * {@inheritdoc}
 	 */
-	public function queue_import( $args = array() ) {
+	public function queue_import( $args = [] ) {
 
-		$defaults = array(
+		$defaults = [
 			'site' => urlencode( site_url() ),
-		);
+		];
 
 		$args = wp_parse_args( $args, $defaults );
 

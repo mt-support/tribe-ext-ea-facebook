@@ -192,38 +192,38 @@ if (
 			$this->add_registered_origin();
 
 			// Enable custom origin.
-			add_filter( 'tribe_aggregator_record_by_origin', array( $this, 'init_origin_record' ), 10, 3 );
-			add_filter( 'tribe_aggregator_source_origin_regexp', array( $this, 'add_origin_regexp' ) );
-			add_filter( 'tribe_aggregator_service_post_import_args', array( $this, 'add_site_url_to_post_args' ) );
-			add_filter( 'tribe_aggregator_event_translate_service_data_field_map', array( $this, 'add_field_map' ) );
-			add_filter( 'tribe_aggregator_event_translate_service_data_venue_field_map', array( $this, 'add_venue_field_map' ) );
-			add_filter( 'tribe_aggregator_event_translate_service_data_organizer_field_map', array( $this, 'add_organizer_field_map' ) );
-			add_filter( 'tribe_aggregator_import_validate_meta_by_origin', array( $this, 'validate_import_meta_by_origin' ), 10, 3 );
-			add_filter( 'tribe_aggregator_clean_unsupported', array( $this, 'stop_unsupported_clean' ), 10, 3 );
+			add_filter( 'tribe_aggregator_record_by_origin', [ $this, 'init_origin_record' ], 10, 3 );
+			add_filter( 'tribe_aggregator_source_origin_regexp', [ $this, 'add_origin_regexp' ] );
+			add_filter( 'tribe_aggregator_service_post_import_args', [ $this, 'add_site_url_to_post_args' ] );
+			add_filter( 'tribe_aggregator_event_translate_service_data_field_map', [ $this, 'add_field_map' ] );
+			add_filter( 'tribe_aggregator_event_translate_service_data_venue_field_map', [ $this, 'add_venue_field_map' ] );
+			add_filter( 'tribe_aggregator_event_translate_service_data_organizer_field_map', [ $this, 'add_organizer_field_map' ] );
+			add_filter( 'tribe_aggregator_import_validate_meta_by_origin', [ $this, 'validate_import_meta_by_origin' ], 10, 3 );
+			add_filter( 'tribe_aggregator_clean_unsupported', [ $this, 'stop_unsupported_clean' ], 10, 3 );
 
 			// Add Global ID origins.
-			add_filter( 'tribe_global_id_valid_types', array( $this, 'register_global_id_valid_types' ) );
-			add_filter( 'tribe_global_id_type_origins', array( $this, 'register_global_id_type_origins' ) );
+			add_filter( 'tribe_global_id_valid_types', [ $this, 'register_global_id_valid_types' ] );
+			add_filter( 'tribe_global_id_type_origins', [ $this, 'register_global_id_type_origins' ] );
 
 			// Add custom origin to UI.
-			add_filter( 'tribe_addons_tab_fields', array( $this, 'add_addon_fields' ) );
-			add_filter( 'tribe_aggregator_fields', array( $this, 'add_ea_settings_fields' ), 10, 4 );
-			add_filter( 'tribe_aggregator_import_setting_origins', array( $this, 'register_import_setting_origin' ) );
-			add_action( 'tribe_events_status_third_party', array( $this, 'add_origin_to_status' ) );
-			add_action( 'tribe_events_aggregator_import_form', array( $this, 'add_origin_to_import_form' ), 10, 2 );
-			add_action( 'tribe_events_aggregator_refine_keyword_exclusions', array( $this, 'add_origin_to_refine_exclusions' ) );
-			add_action( 'tribe_events_aggregator_refine_location_exclusions', array( $this, 'add_origin_to_refine_exclusions' ) );
+			add_filter( 'tribe_addons_tab_fields', [ $this, 'add_addon_fields' ] );
+			add_filter( 'tribe_aggregator_fields', [ $this, 'add_ea_settings_fields' ], 10, 4 );
+			add_filter( 'tribe_aggregator_import_setting_origins', [ $this, 'register_import_setting_origin' ] );
+			add_action( 'tribe_events_status_third_party', [ $this, 'add_origin_to_status' ] );
+			add_action( 'tribe_events_aggregator_import_form', [ $this, 'add_origin_to_import_form' ], 10, 2 );
+			add_action( 'tribe_events_aggregator_refine_keyword_exclusions', [ $this, 'add_origin_to_refine_exclusions' ] );
+			add_action( 'tribe_events_aggregator_refine_location_exclusions', [ $this, 'add_origin_to_refine_exclusions' ] );
 
 			// Handle disconnecting of token.
-			add_action( 'current_screen', array( $this, 'maybe_disconnect_ea_token' ) );
+			add_action( 'current_screen', [ $this, 'maybe_disconnect_ea_token' ] );
 
 			include_once __DIR__ . '/src/Tribe/Record.php';
 
 			// Filter origin import data to Add Site to URL
-			add_filter( 'tribe_aggregator_get_import_data_args', array( 'Tribe\Extensions\EA_FB\Facebook_Dev_Origin__Record', 'filter_add_site_get_import_data' ), 10, 2 );
+			add_filter( 'tribe_aggregator_get_import_data_args', [ 'Tribe\Extensions\EA_FB\Facebook_Dev_Origin__Record', 'filter_add_site_get_import_data' ], 10, 2 );
 
 			// Filter eventbrite events to preserve some fields that aren't supported by origin
-			add_filter( 'tribe_aggregator_before_update_event', array( 'Tribe\Extensions\EA_FB\Facebook_Dev_Origin__Record', 'filter_event_to_preserve_fields' ), 10, 2 );
+			add_filter( 'tribe_aggregator_before_update_event', [ 'Tribe\Extensions\EA_FB\Facebook_Dev_Origin__Record', 'filter_event_to_preserve_fields' ], 10, 2 );
 
 		}
 
@@ -238,10 +238,10 @@ if (
 		 */
 		public function init_origin_record( $record, $origin, $post ) {
 
-			$origins = array(
+			$origins = [
 				self::get_origin(),
 				'ea/' . self::get_origin(),
-			);
+			];
 
 			if ( ! in_array( $origin, $origins, true ) ) {
 				return $record;
@@ -280,32 +280,32 @@ if (
 
 			$origin = self::get_origin();
 
-			$available_origins[$origin] = (object) array(
+			$available_origins[$origin] = (object) [
 				'id'       => $origin,
 				'name'     => self::get_origin_label(),
 				'disabled' => false,
 				'upsell'   => false,
-			);
+			];
 
 			$origins->origins = $available_origins;
 
 			$origin = self::get_origin();
 			$source = $this->get_source_id();
 
-			Tribe__Events__Aggregator__Record__Abstract::$unique_id_fields[$origin] = array(
+			Tribe__Events__Aggregator__Record__Abstract::$unique_id_fields[$origin] = [
 				'source' => $source,
 				'target' => $this->get_target_id(),
-			);
+			];
 
-			Tribe__Events__Aggregator__Record__Abstract::$unique_venue_id_fields[$origin] = array(
+			Tribe__Events__Aggregator__Record__Abstract::$unique_venue_id_fields[$origin] = [
 				'source' => $source,
 				'target' => $this->get_target_id( 'venue' ),
-			);
+			];
 
-			Tribe__Events__Aggregator__Record__Abstract::$unique_organizer_id_fields[$origin] = array(
+			Tribe__Events__Aggregator__Record__Abstract::$unique_organizer_id_fields[$origin] = [
 				'source' => $source,
 				'target' => $this->get_target_id( 'organizer' ),
-			);
+			];
 
 		}
 
@@ -336,7 +336,7 @@ if (
 
 			$origin = self::get_origin();
 
-			$target = str_replace( array( '_', '-' ), ' ', $origin );
+			$target = str_replace( [ '_', '-' ], ' ', $origin );
 			$target = $type . ' ' . $target;
 			$target = ucwords( trim( $target ) );
 			$target = str_replace( ' ', '', $target ) . 'ID';
@@ -412,20 +412,20 @@ if (
 			include __DIR__ . '/src/admin-views/addon-fields.php';
 			$token_html = ob_get_clean();
 
-			$custom_addon_fields = array(
-				$origin . '-start'        => array(
+			$custom_addon_fields = [
+				$origin . '-start'        => [
 					'type' => 'html',
 					'html' => '<h3>' . esc_html( $origin_label ) . '</h3>',
-				),
-				$origin . '-info-box'     => array(
+				],
+				$origin . '-info-box'     => [
 					'type' => 'html',
 					'html' => '<p>' . esc_html( $info_text ) . '</p>',
-				),
-				$origin . '_token_button' => array(
+				],
+				$origin . '_token_button' => [
 					'type' => 'html',
 					'html' => $token_html,
-				),
-			);
+				],
+			];
 
 			$addon_fields = array_merge( $addon_fields, $custom_addon_fields );
 
@@ -443,7 +443,7 @@ if (
 		 *
 		 * @return array List of aggregator fields.
 		 */
-		public function add_ea_settings_fields( $fields, $origin_post_statuses, $origin_categories, $origin_show_map_options = array() ) {
+		public function add_ea_settings_fields( $fields, $origin_post_statuses, $origin_categories, $origin_show_map_options = [] ) {
 
 			$origin       = sanitize_text_field( self::get_origin() );
 			$origin_label = self::get_origin_label();
@@ -467,13 +467,13 @@ if (
 			$show_map_tooltip = _x( 'Show Google Map by default on imported event and venues for %1$s', 'tooltip text for default event map status EA origin setting', 'tribe-ext-ea-facebook' );
 			$show_map_tooltip = sprintf( $show_map_tooltip, $origin_label );
 
-			$custom_fields = array(
-				$origin . '-defaults'                                  => array(
+			$custom_fields = [
+				$origin . '-defaults'                                  => [
 					'type'     => 'html',
 					'html'     => $heading,
 					'priority' => 18.1,
-				),
-				'tribe_aggregator_default_' . $origin . '_post_status' => array(
+				],
+				'tribe_aggregator_default_' . $origin . '_post_status' => [
 					'type'            => 'dropdown',
 					'label'           => esc_html__( 'Default Status', 'tribe-ext-ea-facebook' ),
 					'tooltip'         => esc_html( $status_tooltip ),
@@ -484,8 +484,8 @@ if (
 					'parent_option'   => Tribe__Events__Main::OPTIONNAME,
 					'options'         => $origin_post_statuses,
 					'priority'        => 18.2,
-				),
-				'tribe_aggregator_default_' . $origin . '_category'    => array(
+				],
+				'tribe_aggregator_default_' . $origin . '_category'    => [
 					'type'            => 'dropdown',
 					'label'           => esc_html__( 'Default Event Category', 'tribe-ext-ea-facebook' ),
 					'tooltip'         => esc_html( $category_tooltip ),
@@ -496,11 +496,11 @@ if (
 					'parent_option'   => Tribe__Events__Main::OPTIONNAME,
 					'options'         => $origin_categories,
 					'priority'        => 18.3,
-				),
-			);
+				],
+			];
 
 			if ( ! empty( $origin_show_map_options ) ) {
-				$custom_fields['tribe_aggregator_default_' . $origin . '_show_map'] = array(
+				$custom_fields['tribe_aggregator_default_' . $origin . '_show_map'] = [
 					'type'            => 'dropdown',
 					'label'           => esc_html__( 'Show Google Map', 'tribe-ext-ea-facebook' ),
 					'tooltip'         => esc_html( $show_map_tooltip ),
@@ -511,7 +511,7 @@ if (
 					'parent_option'   => Tribe__Events__Main::OPTIONNAME,
 					'options'         => $origin_show_map_options,
 					'priority'        => 18.4,
-				);
+				];
 			}
 
 			$fields = array_merge( $fields, $custom_fields );
@@ -643,10 +643,10 @@ if (
 				return $should_delete;
 			}
 
-			$origins = array(
+			$origins = [
 				self::get_origin(),
 				'ea/' . self::get_origin(),
-			);
+			];
 
 			if ( ! in_array( $record->origin, $origins, true ) ) {
 				return false;
@@ -727,18 +727,18 @@ if (
 
 			$form_args['origin_slug'] = $origin;
 
-			$field = (object) array(
+			$field = (object) [
 				'label'       => __( 'Import Type:', 'tribe-ext-ea-facebook' ),
 				'placeholder' => __( 'Select Import Type', 'tribe-ext-ea-facebook' ),
 				'help'        => __( 'One-time imports include all currently listed events, while scheduled imports automatically grab new events and updates on a set schedule. Single events can be added via a one-time import.', 'tribe-ext-ea-facebook' ),
 				'source'      => $origin . '_import_type',
-			);
+			];
 
-			$frequency = (object) array(
+			$frequency = (object) [
 				'placeholder' => __( 'Scheduled import frequency', 'tribe-ext-ea-facebook' ),
 				'help'        => __( 'Select how often you would like events to be automatically imported.', 'tribe-ext-ea-facebook' ),
 				'source'      => $origin . '_import_frequency',
-			);
+			];
 
 			$frequencies = Tribe__Events__Aggregator__Cron::instance()->get_frequency();
 
@@ -768,25 +768,25 @@ if (
 				$ea_page->template( 'fields/schedule', $form_args );
 			}
 
-			$field              = (object) array();
+			$field              = (object) [];
 			$field->label       = __( 'Import Source', 'tribe-ext-ea-facebook' );
 			$field->placeholder = __( 'Select Source', 'tribe-ext-ea-facebook' );
 			$field->help        = __( 'Import events directly from your connected account or from a public URL.', 'tribe-ext-ea-facebook' );
 
-			$field->options = array(
-				array(
+			$field->options = [
+				[
 					'id'   => self::get_origin_account_source_url(),
 					'text' => __( 'Import from your account', 'tribe-ext-ea-facebook' ),
-				),
-				array(
+				],
+				[
 					'id'   => 'source_type_url',
 					'text' => __( 'Import from URL', 'tribe-ext-ea-facebook' ),
-				),
-			);
+				],
+			];
 
 			include __DIR__ . '/src/admin-views/import-form/source.php';
 
-			$field              = (object) array();
+			$field              = (object) [];
 			$field->label       = __( 'URL:', 'tribe-ext-ea-facebook' );
 			$field->placeholder = $origin_example_url;
 
@@ -839,7 +839,7 @@ if (
 			// Handle errors.
 			if ( is_wp_error( $response ) || empty( $response->status ) || 'success' !== $response->status ) {
 				// @todo How to register/add error messages?
-				return tribe_error( 'core:aggregator:invalid-token', array(), array( 'response' => $response ) );
+				return tribe_error( 'core:aggregator:invalid-token', [], [ 'response' => $response ] );
 			}
 
 			// The security key is sent on initial authorization, we need to save it if we have it.
@@ -858,7 +858,7 @@ if (
 		 *
 		 * @return string Authentication URL.
 		 */
-		public function get_auth_url( $args = array() ) {
+		public function get_auth_url( $args = [] ) {
 
 			/** @var \stdClass|\WP_Error $ea_service_api */
 			$ea_service_api = tribe( 'events-aggregator.service' )->api();
@@ -869,13 +869,13 @@ if (
 
 			$url = $ea_service_api->domain . sanitize_text_field( self::get_origin() ) . '/' . sanitize_text_field( $ea_service_api->key );
 
-			$defaults = array(
+			$defaults = [
 				'back'      => 'settings',
 				'referral'  => rawurlencode( home_url() ),
 				'admin_url' => rawurlencode( get_admin_url() ),
 				'type'      => 'new',
 				'lang'      => get_bloginfo( 'language' ),
-			);
+			];
 
 			$args = wp_parse_args( $args, $defaults );
 
@@ -890,7 +890,7 @@ if (
 		 */
 		public function get_disconnect_url() {
 
-			$current_url = Tribe__Settings::instance()->get_url( array( 'tab' => 'addons' ) );
+			$current_url = Tribe__Settings::instance()->get_url( [ 'tab' => 'addons' ] );
 
 			$action = 'disconnect-' . sanitize_text_field( self::get_origin() );
 
@@ -938,11 +938,11 @@ if (
 		 */
 		public function get_ea_args() {
 
-			$args = array(
+			$args = [
 				'referral'   => rawurlencode( home_url() ),
 				'url'        => rawurlencode( site_url() ),
 				'secret_key' => $this->get_ea_security_key(),
-			);
+			];
 
 			/**
 			 * Allow filtering for which params we are sending to EA for Token callback.
@@ -984,7 +984,7 @@ if (
 			// If we have an WP_Error we return only CSV
 			if ( is_wp_error( $response ) ) {
 				// @todo How to register/add error messages?
-				return tribe_error( 'core:aggregator:invalid-token', array(), array( 'response' => $response ) );
+				return tribe_error( 'core:aggregator:invalid-token', [], [ 'response' => $response ] );
 			}
 
 			// Clear the EA security key for origin.
@@ -1023,7 +1023,7 @@ if (
 
 			$this->disconnect_ea_token();
 
-			$redirect_url = Tribe__Settings::instance()->get_url( array( 'tab' => 'addons' ) );
+			$redirect_url = Tribe__Settings::instance()->get_url( [ 'tab' => 'addons' ] );
 
 			wp_redirect( $redirect_url );
 			die();
