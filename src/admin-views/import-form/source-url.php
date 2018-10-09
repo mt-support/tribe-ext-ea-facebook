@@ -24,7 +24,7 @@
 			placeholder="<?php echo esc_attr( $field->placeholder ); ?>"
 			value="<?php echo esc_attr( empty( $record->meta['source'] ) ? '' : $record->meta['source'] ); ?>"
 			data-validation-match-regexp="<?php echo esc_attr( $origin_regex ); ?>"
-			data-validation-error="<?php esc_attr_e( 'Invalid URL', 'the-events-calendar' ); ?>"
+			data-validation-error="<?php esc_attr_e( 'Invalid URL', 'tribe-ext-ea-facebook' ); ?>"
 		>
 	</td>
 </tr>

@@ -11,7 +11,7 @@ $selected_frequency = empty( $record->meta['frequency'] ) ? 'daily' : $record->m
 		<input type="hidden" name="has-credentials" id="tribe-has-<?php echo esc_attr( $origin ); ?>-credentials" value="<?php echo absint( ! $is_token_valid ); ?>">
 		<?php if ( 'edit' === $aggregator_action ) : ?>
 			<input type="hidden" name="aggregator[<?php echo esc_attr( $origin ); ?>][import_type]" id="tribe-ea-field-<?php echo esc_attr( $origin ); ?>_import_type" value="schedule" />
-			<strong class="tribe-ea-field-readonly"><?php echo esc_html__( 'Scheduled Import', 'the-events-calendar' ); ?></strong>
+			<strong class="tribe-ea-field-readonly"><?php echo esc_html__( 'Scheduled Import', 'tribe-ext-ea-facebook' ); ?></strong>
 		<?php else : ?>
 			<select
 				name="aggregator[<?php echo esc_attr( $origin ); ?>][import_type]"
@@ -23,10 +23,10 @@ $selected_frequency = empty( $record->meta['frequency'] ) ? 'daily' : $record->m
 			>
 				<option value=""></option>
 				<option value="manual">
-					<?php echo esc_html__( 'One-Time Import', 'the-events-calendar' ); ?>
+					<?php echo esc_html__( 'One-Time Import', 'tribe-ext-ea-facebook' ); ?>
 				</option>
 				<option value="schedule">
-					<?php echo esc_html__( 'Scheduled Import', 'the-events-calendar' ); ?>
+					<?php echo esc_html__( 'Scheduled Import', 'tribe-ext-ea-facebook' ); ?>
 				</option>
 			</select>
 		<?php endif; ?>

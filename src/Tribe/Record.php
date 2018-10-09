@@ -1,8 +1,10 @@
 <?php
-// Don't load directly
-defined( 'WPINC' ) or die;
 
-class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggregator__Record__Abstract {
+namespace Tribe\Extensions\EA_FB;
+
+use Tribe__Events__Aggregator__Record__Abstract;
+
+class Facebook_Dev_Origin__Record extends Tribe__Events__Aggregator__Record__Abstract {
 
 	/**
 	 * {@inheritdoc}
@@ -43,7 +45,7 @@ class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggr
 	 */
 	public static function filter_event_to_force_url( $event, $record ) {
 
-		if ( Tribe__Extension__Facebook_Dev_Origin::get_origin() !== $record->origin ) {
+		if ( Facebook_Dev_Origin::get_origin() !== $record->origin ) {
 			return $event;
 		}
 
@@ -67,7 +69,7 @@ class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggr
 	 */
 	public static function filter_event_to_preserve_fields( $event, $record ) {
 
-		if ( Tribe__Extension__Facebook_Dev_Origin::get_origin() !== $record->origin ) {
+		if ( Facebook_Dev_Origin::get_origin() !== $record->origin ) {
 			return $event;
 		}
 
@@ -85,7 +87,7 @@ class Tribe__Extension__Facebook_Dev_Origin__Record extends \Tribe__Events__Aggr
 	 */
 	public static function filter_add_site_get_import_data( $args, $record ) {
 
-		if ( Tribe__Extension__Facebook_Dev_Origin::get_origin() !== $record->origin ) {
+		if ( Facebook_Dev_Origin::get_origin() !== $record->origin ) {
 			return $args;
 		}
 
