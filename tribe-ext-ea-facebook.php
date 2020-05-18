@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/facebook-ea/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-ea-facebook
  * Description:       Provides a new Facebook Dev origin for Event Aggregator.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Extension Class:   Tribe\Extensions\EA_FB\Facebook_Dev_Origin
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
